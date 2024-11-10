@@ -17,7 +17,7 @@ const upload = multer({ storage: storage });
 app.post('/upload', upload.single('image'), async (req, res) => {
   try {
     const { buffer } = req.file;
-    const result = await Tesseract.recognize(buffer, 'eng');
+    const result = await Tesseract.recognize(buffer, 'por');
     const extractedText = result.data.text;
 
     // Inserir o texto extraído no banco de dados
