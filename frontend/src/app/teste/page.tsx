@@ -1,4 +1,3 @@
-// frontend/src/app/page.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -8,8 +7,8 @@ export default function Home() {
   const [extractedText, setExtractedText] = useState<string | null>(null);
   const [savedTexts, setSavedTexts] = useState<any[]>([]);
 
+  // Buscar textos salvos no banco de dados
   useEffect(() => {
-    // Buscar textos salvos no banco de dados
     const fetchTexts = async () => {
       const response = await fetch('http://localhost:3001/extractions');
       const data = await response.json();
@@ -18,10 +17,6 @@ export default function Home() {
     fetchTexts();
   }, []);
 
-  useEffect(() => {
-    // Deletar todos os itens do banco de dados
-    
-  })
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -48,25 +43,36 @@ export default function Home() {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className="w-full items-center justify-center ml-60">
       <h1>Digitalização de Arquivos</h1>
-      <input type="file" onChange={handleImageChange} />
-      <button className="bg-cyan-500 p-2 rounded-lg"onClick={handleUpload}>Extrair texto</button>
+      <div className="upload-box">
+        <input
+          type="file"
+          onChange={handleImageChange}
+          className="file-input"
+        />
+        <button className="upload-button" onClick={handleUpload}>
+          Extrair texto
+        </button>
+        
+      </div>
       {extractedText && (
-        <div>
+        <div className="output-box">
           <h2>Texto Extraído:</h2>
           <p>{extractedText}</p>
         </div>
       )}
-      <h2>Textos Salvos:</h2>
-      <ul>
-        {savedTexts.map((text) => (
-          <li key={text.id}>
-            <p>{text.extractedText}</p>
-            <small>Salvo em: {new Date(text.createdAt).toLocaleString()}</small>
-          </li>
-        ))}
-      </ul>
+      <div className="saved-texts">
+        <h2>Textos Salvos:</h2>
+        <ul>
+          {savedTexts.map((text) => (
+            <li key={text.id} className="saved-text">
+              <p>{text.extractedText}</p>
+              <small>Salvo em: {new Date(text.createdAt).toLocaleString()}</small>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

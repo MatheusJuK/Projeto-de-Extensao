@@ -19,3 +19,77 @@ body {
   background: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.upload-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  background-color: #0055a5;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.upload-button {
+  background-color: #00c3e5;
+  color: black;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.upload-button:hover {
+  background-color: #00a3c0;
+}
+
+.delete-button:hover {
+  background-color: #ff5555;
+}
+
+.output-box {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 12px;
+  width: 80%;
+}
+
+.saved-texts {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 12px;
+  width: 80%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.saved-text {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.saved-text:last-child {
+  border-bottom: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
